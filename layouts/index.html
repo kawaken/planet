@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode | default "en" }}">
+  {{ partial "head.html" . -}}
+  <body>
+    {{- partial "header.html" . -}}
+    <main>
+      {{ $posts := (.Paginate (where (where .Site.RegularPages "Type" "posts") ".Params.hidden" "!=" "true" )).Pages }}
+      {{ with $posts }}
+        <h2 id="posts">Posts</h2>
+        <ul>
+          {{ range $index, $page := $posts }}
+            <li>{{ $page.Date.Format "2006-01-02" }}&nbsp;{{ $page.Title }}</li>
+          {{ end }}
+        </ul>
+      {{ end }}
+      {{ range $index, $section := .Site.Data.home }}
+        {{ if isset $section "type" }}
+          {{ partial "home/section.html" $section }}
+        {{ end }}
+      {{ end }}
+    </main>
+    {{- partial "footer.html" . -}}
+
+    {{ range $index, $page := .Site.Pages }}
+      {{ $page.Title }}: {{ $page.Type }}<br />
+    {{ end }}
+  </body>
+</html>

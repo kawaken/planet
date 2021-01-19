@@ -1,0 +1,29 @@
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {{ if .IsHome -}}
+    <title>{{ .Site.Title }}</title>
+    {{- else -}}
+    <title>
+      {{ with .Title | default "" }}{{ . }} - {{ end }}{{ .Site.Title }}
+    </title>
+  {{- end }}
+  {{ with .Description | default ($.Param "description") -}}
+    <meta name="description" content="{{ . }}" />
+  {{- end }}
+  <meta name="author" content="{{ $.Param "author" }}" />
+  <meta name="format-detection" content="email=no,telephone=no,address=no" />
+
+  <!-- Resources -->
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="{{ .Site.BaseURL }}css/styles.css"
+  />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <!-- OGP -->
+  {{ partial "ogp.html" . }}
+  <!-- Hugo -->
+  {{ hugo.Generator -}}
+</head>

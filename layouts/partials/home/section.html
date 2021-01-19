@@ -1,0 +1,15 @@
+<h2 id="{{ with .id }}{{ . }}{{ else }}{{ .name | lower }}{{ end }}">
+  {{ .name }}
+</h2>
+{{ partial .type .data }}
+
+{{ define "partials/links" }}
+  <ul>
+    {{ range $index, $page := . }}
+      <li>
+        {{ with .date }}{{ . }}&nbsp;{{ end }}
+        <a href="{{ .href }}">{{ .title }}</a>
+      </li>
+    {{ end }}
+  </ul>
+{{ end }}
