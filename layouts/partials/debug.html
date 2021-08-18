@@ -1,0 +1,12 @@
+{{ $debug := getenv "DEBUG" | default "" }}
+{{ if $debug }}
+  {{ range $index, $page := .Site.Pages }}
+    {{ $page.Title }}: {{ $page.Type }}<br />
+  {{ end }}
+
+  {{ with .Resources.ByType "image" }}
+    {{ range . }}
+      {{ .RelPermalink }}
+    {{ end }}
+  {{ end }}
+{{ end }}

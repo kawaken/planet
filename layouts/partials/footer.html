@@ -1,0 +1,23 @@
+<footer class="page-footer">
+  <p class="copyright">
+    {{ with .Site.Copyright | safeHTML }}{{ . }}{{ end }}&nbsp;|&nbsp;<span
+      >Designed by&nbsp;</span
+    ><a href="https://github.com/kawaken/planet">planet</a>
+  </p>
+  <p class="social">
+    <a href="/">{{ .Site.Title }}</a>
+    {{- with ($.Param "github") -}}
+      &nbsp;|&nbsp;<a href="https://github.com/{{ . }}">GitHub</a>{{- end -}}
+
+
+    {{- with ($.Param "twitter") -}}
+      &nbsp;|&nbsp;<a href="https://twitter.com/@{{ . }}">Twitter</a>{{- end -}}
+
+
+    {{- with ($.Param "instagram") -}}
+      &nbsp;|&nbsp;<a href="https://www.instagram.com/{{ . }}/"
+        >Instagram</a
+      >{{- end -}}
+
+  </p>
+</footer>

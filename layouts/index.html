@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode | default "en" }}">
+  {{ partial "head.html" . -}}
+  <body>
+    {{- partial "header.html" . -}}
+    {{ $posts_type := .Param "mainSection" | default "posts" }}
+    <main>
+      {{ $posts := (.Paginate (where (where .Site.RegularPages "Type" $posts_type) ".Params.hidden" "!=" "true" )).Pages }}
+      {{ with $posts }}
+        <h2 id="posts">{{- $posts_type | title -}}</h2>
+        {{ partial "list.html" $posts }}
+      {{ end }}
+      {{ range $index, $section := .Site.Data.home }}
+        {{ if isset $section "type" }}
+          {{ partial "home/section.html" $section }}
+        {{ end }}
+      {{ end }}
+    </main>
+    {{- partial "footer.html" . -}}
+
+    <!-- debug -->
+    {{ partial "debug.html" . }}
+  </body>
+</html>
