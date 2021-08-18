@@ -1,8 +1,8 @@
 name = "planet"
 description = "Minimal and plain single column theme"
 license = "MIT"
-licenselink = "https://github.com/kawaken/pandora/blob/master/LICENSE"
-homepage = "https://github.com/kawaken/pandora"
+licenselink = "https://github.com/kawaken/planet/blob/master/LICENSE"
+homepage = "https://github.com/kawaken/planet"
 tags = ["blog", "personal", "responsive", "minimal", "simple"]
 features = ["responsive"]
 min_version = "0.41"

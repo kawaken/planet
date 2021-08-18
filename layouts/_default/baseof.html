@@ -3,11 +3,11 @@
 {{ partial "head.html" . -}}
 <body>
   {{- partial "header.html" . -}}
-    <section class="section">
-      <div class="container">
-        {{- block "main" . }}<h1 class="title">{{ .Site.Title }}</h1>{{- end }}
-      </div>
-    </section>
+  <main>
+    {{- block "main" . }}<h1 class="title">{{ .Site.Title }}</h1>{{- end }}
+  </main>
   {{- partial "footer.html" . -}}
+  <!-- debug -->
+  {{ partial "debug.html" . }}
 </body>
 </html>

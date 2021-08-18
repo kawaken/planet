@@ -3,7 +3,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   {{ if .IsHome -}}
     <title>{{ .Site.Title }}</title>
-    {{- else -}}
+  {{- else -}}
     <title>
       {{ with .Title | default "" }}{{ . }} - {{ end }}{{ .Site.Title }}
     </title>
@@ -11,7 +11,10 @@
   {{ with .Description | default ($.Param "description") -}}
     <meta name="description" content="{{ . }}" />
   {{- end }}
-  <meta name="author" content="{{ $.Param "author" }}" />
+
+  {{ with ($.Param "author") -}}
+    <meta name="author" content="{{ . }}" />
+  {{- end }}
   <meta name="format-detection" content="email=no,telephone=no,address=no" />
 
   <!-- Resources -->
@@ -23,7 +26,12 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <link rel="icon" type="image/png" href="/favicon.png" />
   <!-- OGP -->
-  {{ partial "ogp.html" . }}
+  {{ template "_internal/opengraph.html" . }}
+  {{ template "_internal/twitter_cards.html" . }}
+  {{ with ($.Param "twitter") }}
+    <meta name="twitter:site" content="@{{ . }}" />
+    <meta name="twitter:creator" content="@{{ . }}" />
+  {{ end }}
   <!-- Hugo -->
   {{ hugo.Generator -}}
 </head>

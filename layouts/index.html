@@ -3,15 +3,12 @@
   {{ partial "head.html" . -}}
   <body>
     {{- partial "header.html" . -}}
+    {{ $posts_type := .Param "mainSection" | default "posts" }}
     <main>
-      {{ $posts := (.Paginate (where (where .Site.RegularPages "Type" "posts") ".Params.hidden" "!=" "true" )).Pages }}
+      {{ $posts := (.Paginate (where (where .Site.RegularPages "Type" $posts_type) ".Params.hidden" "!=" "true" )).Pages }}
       {{ with $posts }}
-        <h2 id="posts">Posts</h2>
-        <ul>
-          {{ range $index, $page := $posts }}
-            <li>{{ $page.Date.Format "2006-01-02" }}&nbsp;{{ $page.Title }}</li>
-          {{ end }}
-        </ul>
+        <h2 id="posts">{{- $posts_type | title -}}</h2>
+        {{ partial "list.html" $posts }}
       {{ end }}
       {{ range $index, $section := .Site.Data.home }}
         {{ if isset $section "type" }}
@@ -21,8 +18,7 @@
     </main>
     {{- partial "footer.html" . -}}
 
-    {{ range $index, $page := .Site.Pages }}
-      {{ $page.Title }}: {{ $page.Type }}<br />
-    {{ end }}
+    <!-- debug -->
+    {{ partial "debug.html" . }}
   </body>
 </html>

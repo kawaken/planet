@@ -13,3 +13,14 @@
     {{ end }}
   </ul>
 {{ end }}
+
+{{ define "partials/panel" }}
+  {{ $markdown := .content | markdownify }}
+  <article>
+    {{ if not ( strings.Contains $markdown "<p>" ) }}
+      <p>{{ $markdown }}</p>
+      {{ else }}
+      {{ $markdown }}
+    {{ end }}
+  </article>
+{{ end }}
