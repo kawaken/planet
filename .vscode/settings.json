@@ -1,0 +1,4 @@
+{
+  "html.format.contentUnformatted": "pre,code,textarea",
+  "html.format.wrapLineLength": 300
+ }

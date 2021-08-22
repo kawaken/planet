@@ -1,7 +1,8 @@
 {
+  "printWidth": 120,
   "overrides": [
     {
-      "files": ["themes/**/*.html"],
+      "files": ["*.html"],
       "options": {
         "parser": "go-template"
       }
