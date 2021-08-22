@@ -1,0 +1,24 @@
+{
+  "private": true,
+  "name": "planet",
+  "version": "0.1.0",
+  "description": "Planet is a simple and plain Hugo theme for personal web site.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kawaken/planet.git"
+  },
+  "author": "Kentaro Kawano",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kawaken/planet/issues"
+  },
+  "homepage": "https://github.com/kawaken/planet#readme",
+  "devDependencies": {
+    "prettier": "^2.3.2",
+    "prettier-plugin-go-template": "^0.0.11"
+  }
+}
