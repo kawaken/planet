@@ -1,5 +1,5 @@
 name = "planet"
-description = "Minimal and plain single column theme"
+description = "Simple and plain Hugo theme for personal web site."
 license = "MIT"
 licenselink = "https://github.com/kawaken/planet/blob/master/LICENSE"
 homepage = "https://github.com/kawaken/planet"
