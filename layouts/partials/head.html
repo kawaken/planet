@@ -5,7 +5,7 @@
     <title>{{ .Site.Title }}</title>
   {{- else -}}
     <title>
-      {{ with .Title | default "" }}{{ . }} - {{ end }}{{ .Site.Title }}
+      {{ with .Title | default "" }}{{ . }}&nbsp;-&nbsp;{{ end }}{{ .Site.Title }}
     </title>
   {{- end }}
   {{ with .Description | default ($.Param "description") -}}
@@ -18,11 +18,7 @@
   <meta name="format-detection" content="email=no,telephone=no,address=no" />
 
   <!-- Resources -->
-  <link
-    rel="stylesheet"
-    type="text/css"
-    href="{{ .Site.BaseURL }}css/styles.css"
-  />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <link rel="icon" type="image/png" href="/favicon.png" />
   <!-- OGP -->
