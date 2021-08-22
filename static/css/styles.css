@@ -1,0 +1,166 @@
+:root {
+  --color: #333;
+  --border: #333;
+  --bg-color: whitesmoke;
+  --a-link-color: mediumblue;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure,
+blockquote,
+pre,
+code,
+dl,
+dd {
+  margin: 0;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 2rem;
+}
+
+h2:first-child {
+  margin-top: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+b,
+strong,
+th {
+  font-weight: 600;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  max-width: 900px;
+  min-height: 100vh;
+  line-height: 1.5;
+  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans", "BIZ UDPGothic", Meiryo, sans-serif;
+  color: var(--color);
+  margin: auto;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.page-header {
+  padding: 1rem;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.page-footer {
+  border-top: solid 1px var(--color);
+  padding: 1rem;
+  font-size: 0.8em;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+}
+
+.page-header a,
+.page-footer a {
+  text-decoration: none;
+  color: var(--color);
+}
+
+.copyright {
+  margin-right: 2em;
+}
+
+main {
+  padding: 2rem 1rem;
+  flex-grow: 0.8;
+}
+
+article > * {
+  margin-top: 1em;
+}
+
+article > header {
+  margin-top: 0;
+}
+
+h2 {
+  border-bottom: solid 1px var(--bg-color);
+}
+
+a {
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+}
+
+main > a:link {
+  color: --a-link-color;
+}
+
+img,
+picture {
+  max-width: 100%;
+  max-height: 500px;
+  display: block;
+  margin: 1em auto;
+}
+
+pre > code {
+  padding: 1em;
+  display: block;
+  overflow-x: auto;
+}
+
+blockquote {
+  padding: 1em;
+  border-left: 0.05em solid var(--border);
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+}
+
+code {
+  margin: 0 0.1em;
+  padding: 0.05em 0.4em;
+  border-radius: 3px;
+  background-color: var(--bg-color);
+}
+
+ul {
+  padding-inline-start: 1em;
+}
+
+ul li {
+  list-style-type: none;
+}
+
+ul li:before {
+  content: "-";
+  padding-right: 10px;
+}
