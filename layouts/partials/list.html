@@ -1,7 +1,7 @@
 <ul>
   {{ range $index, $page := . }}
     <li>
-      {{ $page.Date.Format "2006-01-02" }}&nbsp;<a href="{{ $page.Permalink }}"
+      {{ $page.Date.Format "2006-01-02" }}&nbsp;<a href="{{ $page.RelPermalink }}"
         >{{ $page.Title }}</a
       >
     </li>
