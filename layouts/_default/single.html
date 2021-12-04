@@ -3,7 +3,8 @@
   <article>
     <header><h1>{{ .Title }}</h1></header>
     <footer>
-      <p><small>published: {{ .PublishDate.Format "2006-01-02 15:04:05" }} | lastmod: {{ .Lastmod.Format "2006-01-02 15:04:05" }}</small></p>
+      <p><small>published: {{ .PublishDate.Format "2006-01-02" }}
+      {{ if ne (.PublishDate.Format "2006-01-02") (.Lastmod.Format "2006-01-02")}} | lastmod: {{ .Lastmod.Format "2006-01-02" }}{{ end }}</small></p>
     </footer>
     {{ .Content }}
   </article>
