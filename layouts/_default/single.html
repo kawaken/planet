@@ -1,4 +1,8 @@
 {{ define "title" }} {{ .Title }} &ndash; {{ .Site.Title }} {{ end }}
+{{ define "prefetch" }}
+  {{ with .PrevInSection }}<link rel="prefetch" href="{{ .Permalink }}" as="document">{{ end }}
+  {{ with .NextInSection }}<link rel="prefetch" href="{{ .Permalink }}" as="document">{{ end }}
+{{ end }}
 {{ define "main" }}
   <article>
     <header><h1>{{ .Title }}</h1></header>
@@ -7,4 +11,8 @@
     </footer>
     {{ .Content }}
   </article>
+  <nav>
+{{ with .PrevInSection }}<p>Prev: <a  href="{{ .Permalink }}">{{.Title}}</a></p>{{ end }}
+  {{ with .NextInSection }}<p>Next: <a  href="{{ .Permalink }}">{{.Title}}</a></p>{{ end }}
+  </nav>
 {{ end }}

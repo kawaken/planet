@@ -120,6 +120,9 @@ a {
 main > a:link {
   color: --a-link-color;
 }
+main > nav {
+  margin-top: 1em;
+}
 
 img,
 picture {
