@@ -2,7 +2,7 @@
 <html lang="{{ .Site.LanguageCode | default "en" }}">
 <head>
 {{ partial "head.html" . -}}
-{{- block "preload" . }}{{ partial "preload.html" .Pages -}}{{- end }}
+{{- block "prefetch" . }}{{ partial "prefetch.html" .Pages -}}{{- end }}
 </head>
 <body>
   {{- partial "header.html" . -}}
