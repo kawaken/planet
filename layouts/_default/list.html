@@ -4,5 +4,6 @@
   {{ if .Content }}
     <section id="description">{{ .Content }}</section>
   {{ end }}
-  {{ partial "list.html" .Pages }}
+  {{ partial "list.html" .Paginator.Pages }}
+  {{ partial "pagination.html" . }}
 {{ end }}

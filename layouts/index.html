@@ -1,5 +1,6 @@
 {{ $posts_type := .Param "mainSection" | default "posts" -}}
-{{ $posts := (.Paginate (where (where .Site.RegularPages "Type" $posts_type) ".Params.hidden" "!=" "true" )).Pages -}}
+{{ $posts_count := .Param "paginate" | default 10 -}}
+{{ $posts := first $posts_count (where (where .Site.RegularPages "Type" $posts_type) ".Params.hidden" "!=" "true") -}}
 <!DOCTYPE html>
 <html lang="{{ .Site.LanguageCode | default "en" }}">
   <head>
