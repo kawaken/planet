@@ -12,8 +12,12 @@
     <main>
       {{ with $posts }}
         <h2 id="posts">{{- $posts_type | title -}}</h2>
-        {{ partial "list.html" $posts }}
+        {{ partial "home/list.html" $posts }}
       {{ end }}
+      {{ with .Site.GetPage "section" $posts_type -}}
+        <p><a href="{{ .RelPermalink }}">see others</a></p>
+      {{ end }}
+
       {{ range $index, $section := .Site.Data.home }}
         {{ if isset $section "type" }}
           {{ partial "home/section.html" $section }}
