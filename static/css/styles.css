@@ -136,6 +136,7 @@ pre > code {
   padding: 1em;
   display: block;
   overflow-x: auto;
+  font-family: Monaco, Consolas, Courier New, Courier, monospace, sans-serif;
 }
 
 blockquote {
