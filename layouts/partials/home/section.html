@@ -1,8 +1,12 @@
 <h2 id="{{ with .id }}{{ . }}{{ else }}{{ .name | lower }}{{ end }}">
-  {{ .name }}
+  {{ .name | title }}
 </h2>
-{{ partial .type .data }}
-
+{{ if .url }}
+  {{ $data := getJSON .url }}
+  {{ partial .type $data}}
+{{ else }}
+  {{ partial .type .data }}
+{{ end }}
 {{ define "partials/links" }}
   <ul>
     {{ range $index, $page := . }}
@@ -23,4 +27,28 @@
       {{ $markdown }}
     {{ end }}
   </article>
+{{ end }}
+
+{{ define "partials/photos" }}
+  {{ $sizes := site.Param "photoSizes" | default "100vw" }}
+  {{ $paginate := site.Param "photoPaginate" | default 32 }}
+  {{ $bu := .base_url }}
+  <div class="gallery">
+  {{ range $photo := first $paginate (sort .photos "meta.taken" "desc")}}
+  {{ $targets := where $photo.sources ".is_square" "==" false}}
+  {{ $len := (len $targets)}}
+  <img loading="lazy" srcset="
+    {{- range $i, $src := $targets -}}
+      {{$bu}}/{{ path.Join $src.path}} {{ $src.width -}}w
+      {{- if ne (add $i 1) $len }}, {{end}}
+    {{ end -}}
+  " sizes="{{$sizes}}" alt="{{$photo.title}}">
+  <link rel="preload" as="image" imagesrcset="
+    {{- range $i, $src := $targets -}}
+      {{$bu}}/{{ path.Join $src.path}} {{ $src.width -}}w
+      {{- if ne (add $i 1) $len }}, {{end}}
+    {{ end -}}
+  " imagesizes="{{$sizes}}">
+  {{ end }}
+  </div>
 {{ end }}
