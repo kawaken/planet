@@ -132,6 +132,19 @@ picture {
   margin: 1em auto;
 }
 
+div.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2px;
+  margin: 1em auto;
+}
+
+div.gallery > img {
+  max-width: 210px;
+  margin: 0;
+}
+
 pre > code {
   padding: 1em;
   display: block;
