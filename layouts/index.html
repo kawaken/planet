@@ -17,8 +17,7 @@
       {{ with .Site.GetPage "section" $posts_type -}}
         <p><a href="{{ .RelPermalink }}">see others</a></p>
       {{ end }}
-
-      {{ range $index, $section := .Site.Data.home }}
+      {{ range $index, $section := sort .Site.Data.home "order" }}
         {{ if isset $section "type" }}
           {{ partial "home/section.html" $section }}
         {{ end }}
