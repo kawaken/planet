@@ -34,18 +34,18 @@
   {{ $paginate := site.Param "photoPaginate" | default 32 }}
   {{ $bu := .base_url }}
   <div class="gallery">
-  {{ range $photo := first $paginate (sort .photos "meta.taken" "desc")}}
+  {{ range $photo := first $paginate (sort .photos "meta.taken_at" "desc")}}
   {{ $targets := where $photo.sources ".is_square" "==" false}}
   {{ $len := (len $targets)}}
   <img loading="lazy" srcset="
     {{- range $i, $src := $targets -}}
-      {{$bu}}/{{ path.Join $src.path}} {{ $src.width -}}w
+      {{$bu}}/{{ path.Join $photo.id $src.name}} {{ $src.width -}}w
       {{- if ne (add $i 1) $len }}, {{end}}
     {{ end -}}
-  " sizes="{{$sizes}}" alt="{{$photo.title}}">
+  " sizes="{{$sizes}}" alt="{{$photo.meta.title}}">
   <link rel="preload" as="image" imagesrcset="
     {{- range $i, $src := $targets -}}
-      {{$bu}}/{{ path.Join $src.path}} {{ $src.width -}}w
+      {{$bu}}/{{ path.Join $photo.id $src.name}} {{ $src.width -}}w
       {{- if ne (add $i 1) $len }}, {{end}}
     {{ end -}}
   " imagesizes="{{$sizes}}">
