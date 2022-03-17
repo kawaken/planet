@@ -170,17 +170,11 @@ code {
 }
 
 ul {
-  padding-inline-start: 1em;
+  list-style-type: '- ';
 }
 
 ul li {
-  list-style-type: none;
   line-height: 1.8;
-}
-
-ul li:before {
-  content: "-";
-  padding-right: 10px;
 }
 
 .pagination {
