@@ -170,11 +170,12 @@ code {
 }
 
 ul {
-  list-style-type: '- ';
+  list-style-type: '-';
 }
 
-ul li {
+li {
   line-height: 1.8;
+  padding-left: 1em;
 }
 
 .pagination {
