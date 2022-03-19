@@ -171,6 +171,7 @@ code {
 
 ul {
   list-style-type: '-';
+  padding-inline-start: 1em;
 }
 
 li {
