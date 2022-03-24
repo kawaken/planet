@@ -1,7 +1,7 @@
 {{ range $index, $page := . }}
 {{ with $page }}
   <article>
-    <header><a href="{{ .RelPermalink }}"><h2>{{ .Title }}</h2></a></header>
+    <header><a href="{{ .RelPermalink }}"><h3>{{ .Title }}</h3></a></header>
     <footer>
       <p><small>{{ .PublishDate.Format "2006-01-02" }}</small></p>
     </footer>

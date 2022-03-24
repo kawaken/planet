@@ -12,7 +12,7 @@
     <main>
       {{ with $posts }}
         <h2 id="posts">{{- $posts_type | title -}}</h2>
-        {{ partial "home/list.html" $posts }}
+        {{ partial "home/summaries.html" $posts }}
       {{ end }}
       {{ with .Site.GetPage "section" $posts_type -}}
         <p><a href="{{ .RelPermalink }}">see others</a></p>
