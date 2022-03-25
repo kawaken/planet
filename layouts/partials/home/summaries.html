@@ -1,12 +1,12 @@
 {{ range $index, $page := . }}
 {{ with $page }}
   <article>
-    <header><a href="{{ .RelPermalink }}"><h3>{{ .Title }}</h3></a></header>
-    <footer>
-      <p><small>{{ .PublishDate.Format "2006-01-02" }}</small></p>
-    </footer>
-    {{ .Summary }}
-    <p><a href="{{ .RelPermalink }}">More</a></p>
+    <header class="summary-header">
+    <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+    <p><small>published: {{ .PublishDate.Format "2006-01-02" }}</small></p>
+    </header>
+    <p>{{- .Summary -}}<p>
+    <p><small><a href="{{ .RelPermalink }}">{{ site.Param "readMoreText" | default "more" }}</a></small></p>
   </article>
 {{ end }}
 {{ end }}
