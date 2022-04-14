@@ -1,0 +1,12 @@
+{{ define "title" }}{{ .Title }} &ndash; {{ .Site.Title }} {{ end }}
+{{ define "main" }}
+  <h2>{{- .Title -}}</h2>
+  {{ if .Description }}
+    <section id="description"><header>{{ .Description|markdownify }}</header></section>
+  {{ end }}
+  {{ partial "list.html" .Paginator.Pages }}
+  {{ partial "pagination.html" . }}
+  <h2>Tags</h2>
+  {{ partial "list_tags.html" .}}
+
+{{ end }}

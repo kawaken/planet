@@ -122,11 +122,15 @@ main > a:link {
   color: --a-link-color;
 }
 main > nav {
-  margin-top: 1em;
+  margin-top: 2em;
 }
 
 main > section {
   margin-bottom: 2em;
+}
+
+section > header {
+  margin-top: 1.5em;
 }
 
 section > footer {
@@ -181,6 +185,12 @@ code {
 ul {
   list-style-type: '-';
   padding-inline-start: 1em;
+}
+
+ul.flex {
+  list-style: none;
+  display: flex;
+  padding-inline-start: 0;
 }
 
 li {

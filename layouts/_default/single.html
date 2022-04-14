@@ -5,11 +5,23 @@
 {{ end }}
 {{ define "main" }}
   <article>
-    <header><h1>{{ .Title }}</h1></header>
-    <footer>
-      <p><small>published: {{ .PublishDate.Format "2006-01-02" }}</small></p>
-    </footer>
+    <header>
+      <h1>{{ .Title }}</h1>
+      <p>
+        <small>published: {{ .PublishDate.Format "2006-01-02" }}</small>
+      </p>
+    </header>
     {{ .Content }}
+    {{ $tags := .GetTerms "tags" }}
+    {{ with $tags }}
+    <footer>
+      <p>
+        <small>tags: 
+        {{ range $tags }}<a href="{{ .Permalink }}">{{ .LinkTitle }}</a> {{end}}
+        </small>
+      </p>
+    </footer>
+    {{ end }}
   </article>
   <nav>
 {{ with .PrevInSection }}<p>Prev: <a  href="{{ .RelPermalink }}">{{.Title}}</a></p>{{ end }}
