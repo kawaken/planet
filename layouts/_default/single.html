@@ -17,7 +17,7 @@
     <footer>
       <p>
         <small>tags: 
-        {{ range $tags }}<a href="{{ .Permalink }}">{{ .LinkTitle }}</a> {{end}}
+        {{ range $tags }}<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a> {{end}}
         </small>
       </p>
     </footer>

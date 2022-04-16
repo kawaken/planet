@@ -1,9 +1,11 @@
 {{ define "title" }}{{ .Title }} &ndash; {{ .Site.Title }} {{ end }}
 {{ define "main" }}
   <h2>{{- .Title -}}</h2>
-  {{ if .Description }}
-    <section id="description"><header>{{ .Description|markdownify }}</header></section>
-  {{ end }}
+  <section id="description">
+  <header>
+  {{ if .Description }}{{ .Description|markdownify }}{{ else }}{{ .Title }} に関連する記事です。{{ end }}
+  </header>
+  </section>
   {{ partial "list.html" .Paginator.Pages }}
   {{ partial "pagination.html" . }}
   <h2>Tags</h2>
