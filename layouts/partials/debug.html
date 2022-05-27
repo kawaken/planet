@@ -1,4 +1,4 @@
-{{ $debug := getenv "DEBUG" | default "" }}
+{{ $debug := getenv "HUGO_DEBUG" | default "" }}
 {{ if $debug }}
   {{ range $index, $page := .Site.Pages }}
     {{ $page.Title }}: {{ $page.Type }}<br />

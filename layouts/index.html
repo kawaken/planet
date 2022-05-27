@@ -21,12 +21,14 @@
         </footer>
       {{ end }}
       </section>
-      {{ range $index, $section := sort .Site.Data.home "order" }}
+      {{ with .Site.Data.home }}
+      {{ range $index, $section := sort . "order" }}
         {{ if isset $section "type" }}
         <section>
           {{ partial "home/section.html" $section }}
         </section>
         {{ end }}
+      {{ end }}
       {{ end }}
     </main>
     {{- partial "footer.html" . -}}
