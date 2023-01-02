@@ -3,16 +3,20 @@
   {{ with .PrevInSection }}<link rel="prerender" href="{{ .RelPermalink }}" as="document">{{ end }}
   {{ with .NextInSection }}<link rel="prerender" href="{{ .RelPermalink }}" as="document">{{ end }}
 {{ end }}
-{{ define "main" }}
+{{ define "main" }}{{ $tags := .GetTerms "tags" }}
   <article>
     <header>
       <h1>{{ .Title }}</h1>
       <p>
         <small>published: {{ .PublishDate.Format "2006-01-02" }}</small>
+        {{ with $tags }}&nbsp;/&nbsp;
+        <small>tags: 
+        {{ range $tags }}<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a> {{end}}
+        </small>
+        {{ end }}
       </p>
     </header>
     {{ .Content }}
-    {{ $tags := .GetTerms "tags" }}
     {{ with $tags }}
     <footer>
       <p>
