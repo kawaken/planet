@@ -4,34 +4,35 @@
 <!DOCTYPE html>
 <html lang="{{ .Site.LanguageCode | default "en" }}">
   <head>
-  {{ partial "head.html" . -}}
-  {{ partial "prefetch.html" $posts -}}
+    {{ partial "head.html" . -}}
+    {{ partial "prefetch.html" $posts -}}
   </head>
   <body>
     {{- partial "header.html" . -}}
     <main>
       <section>
-      {{ with $posts }}
-        <h2 id="posts">{{- $posts_type | title -}}</h2>
-        {{ partial "home/summaries.html" $posts }}
-      {{ end }}
-      {{ with .Site.GetPage "section" $posts_type -}}
-        <footer>
-          <p><a href="{{ .RelPermalink }}">{{ site.Param "listPageText" | default "see others" }}</a></p>
-        </footer>
-      {{ end }}
+        {{ with $posts }}
+          <h2 id="posts">{{- $posts_type | title -}}</h2>
+          {{ partial "home/summaries.html" $posts }}
+        {{ end }}
+        {{ with .Site.GetPage "section" $posts_type -}}
+          <footer>
+            <p><a href="{{ .RelPermalink }}">{{ site.Param "listPageText" | default "see others" }}</a></p>
+          </footer>
+        {{ end }}
       </section>
       {{ with .Site.Data.home }}
-      {{ range $index, $section := sort . "order" }}
-        {{ if isset $section "type" }}
-        <section>
-          {{ partial "home/section.html" $section }}
-        </section>
+        {{ range $index, $section := sort . "order" }}
+          {{ if isset $section "type" }}
+            <section>
+              {{ partial "home/section.html" $section }}
+            </section>
+          {{ end }}
         {{ end }}
-      {{ end }}
       {{ end }}
     </main>
     {{- partial "footer.html" . -}}
+
 
     <!-- debug -->
     {{ partial "debug.html" . }}

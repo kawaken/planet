@@ -1,6 +1,6 @@
 {{ range first 1 . }}
-<link rel="prerender" href="{{ .RelPermalink }}" as="document">
+  <link rel="prerender" href="{{ .RelPermalink }}" as="document" />
 {{- end }}
 {{ range first 9 (after 1 .) -}}
-<link rel="prefetch" href="{{ .RelPermalink }}" as="document">
+  <link rel="prefetch" href="{{ .RelPermalink }}" as="document" />
 {{ end }}

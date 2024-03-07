@@ -1,35 +1,35 @@
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  {{ if .IsHome -}}
-    <title>{{ .Site.Title }}</title>
-  {{- else -}}
-    <title>
-      {{ with .Title | default "" }}{{ . }}&nbsp;-&nbsp;{{ end }}{{ .Site.Title }}
-    </title>
-  {{- end }}
-  {{ with .Description | default ($.Param "description") -}}
-    <meta name="description" content="{{ . }}" />
-  {{- end }}
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+{{ if .IsHome -}}
+  <title>{{ .Site.Title }}</title>
+{{- else -}}
+  <title>
+    {{ with .Title | default "" }}{{ . }}&nbsp;-&nbsp;{{ end }}{{ .Site.Title }}
+  </title>
+{{- end }}
+{{ with .Description | default ($.Param "description") -}}
+  <meta name="description" content="{{ . }}" />
+{{- end }}
 
-  {{ with ($.Param "author") -}}
-    <meta name="author" content="{{ . }}" />
-  {{- end }}
-  <meta name="format-detection" content="email=no,telephone=no,address=no" />
+{{ with ($.Param "author") -}}
+  <meta name="author" content="{{ . }}" />
+{{- end }}
+<meta name="format-detection" content="email=no,telephone=no,address=no" />
 
-  <!-- Resources -->
-  <link rel="stylesheet" href="/css/styles.css" />
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-  <link rel="icon" type="image/png" href="/favicon.png" />
-  <!-- OGP -->
-  {{ template "_internal/opengraph.html" . }}
-  {{ partial "twitter_cards.html" . }}
-  {{ with ($.Param "twitter") }}
-    <meta name="twitter:site" content="@{{ . }}" />
-    <meta name="twitter:creator" content="@{{ . }}" />
-  {{ end }}
-  <!-- RSS -->
-  {{ with .OutputFormats.Get "rss" -}}
-    {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
-  {{ end -}}
-  <!-- Hugo -->
-  {{ hugo.Generator -}}
+<!-- Resources -->
+<link rel="stylesheet" href="/css/styles.css" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="icon" type="image/png" href="/favicon.png" />
+<!-- OGP -->
+{{ template "_internal/opengraph.html" . }}
+{{ partial "twitter_cards.html" . }}
+{{ with ($.Param "twitter") }}
+  <meta name="twitter:site" content="@{{ . }}" />
+  <meta name="twitter:creator" content="@{{ . }}" />
+{{ end }}
+<!-- RSS -->
+{{ with .OutputFormats.Get "rss" -}}
+  {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+{{ end -}}
+<!-- Hugo -->
+{{ hugo.Generator -}}

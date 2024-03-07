@@ -1,34 +1,45 @@
-{{ define "title" }} {{ .Title }} &ndash; {{ .Site.Title }} {{ end }}
+{{ define "title" }}{{ .Title }} &ndash; {{ .Site.Title }}{{ end }}
 {{ define "prefetch" }}
-  {{ with .PrevInSection }}<link rel="prerender" href="{{ .RelPermalink }}" as="document">{{ end }}
-  {{ with .NextInSection }}<link rel="prerender" href="{{ .RelPermalink }}" as="document">{{ end }}
+  {{ with .PrevInSection }}<link rel="prerender" href="{{ .RelPermalink }}" as="document" />{{ end }}
+  {{ with .NextInSection }}<link rel="prerender" href="{{ .RelPermalink }}" as="document" />{{ end }}
 {{ end }}
-{{ define "main" }}{{ $tags := .GetTerms "tags" }}
+{{ define "main" }}
+  {{ $tags := .GetTerms "tags" }}
   <article>
     <header>
       <h1>{{ .Title }}</h1>
       <p>
-        <small>published: {{ .PublishDate.Format "2006-01-02" }}</small>
-        {{ with $tags }}&nbsp;/&nbsp;
-        <small>tags: 
-        {{ range $tags }}<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a> {{end}}
-        </small>
+        <small>{{ .PublishDate.Format "2006-01-02" }}</small>
+        {{ with $tags }}
+          &nbsp;/&nbsp;
+          <small>
+            {{ range $i, $e := $tags -}}
+              {{- if $i }},&nbsp;{{ end }}<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+            {{- end }}
+          </small>
         {{ end }}
       </p>
     </header>
     {{ .Content }}
-    {{ with $tags }}
+
+
     <footer>
       <p>
-        <small>tags: 
-        {{ range $tags }}<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a> {{end}}
-        </small>
+        <small>Published: {{ .PublishDate.Format "2006-01-02" }}</small>
+        {{ with $tags }}
+          &nbsp;/&nbsp;
+          <small>
+            Tags:
+            {{ range $i, $e := $tags -}}
+              {{- if $i }},&nbsp;{{ end }}<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+            {{- end }}
+          </small>
+        {{ end }}
       </p>
     </footer>
-    {{ end }}
   </article>
   <nav>
-{{ with .PrevInSection }}<p>Prev: <a  href="{{ .RelPermalink }}">{{.Title}}</a></p>{{ end }}
-  {{ with .NextInSection }}<p>Next: <a  href="{{ .RelPermalink }}">{{.Title}}</a></p>{{ end }}
+    {{ with .PrevInSection }}<p>Prev: <a href="{{ .RelPermalink }}">{{ .Title }}</a></p>{{ end }}
+    {{ with .NextInSection }}<p>Next: <a href="{{ .RelPermalink }}">{{ .Title }}</a></p>{{ end }}
   </nav>
 {{ end }}

@@ -87,7 +87,8 @@ body {
 
 .page-header a,
 .page-footer a,
-.summary-header a {
+.summary-header a,
+.summary a {
   text-decoration: none;
   color: var(--color);
 }
@@ -107,6 +108,10 @@ article > * {
 
 article > header {
   margin-top: 0;
+}
+
+header.summary-header {
+  margin-bottom: 1em;
 }
 
 h2 {
@@ -183,7 +188,7 @@ code {
 }
 
 ul {
-  list-style-type: '-';
+  list-style-type: "-";
   padding-inline-start: 1em;
 }
 

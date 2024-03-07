@@ -1,14 +1,18 @@
-{{ define "title" }}{{ .Title }} &ndash; {{ .Site.Title }} {{ end }}
+{{ define "title" }}{{ .Title }} &ndash; {{ .Site.Title }}{{ end }}
 {{ define "main" }}
   <h2>{{- .Title -}}</h2>
   <section id="description">
-  <header>
-  {{ if .Description }}{{ .Description|markdownify }}{{ else }}{{ .Title }} に関連する記事です。{{ end }}
-  </header>
+    <header>
+      {{ if .Description }}
+        {{ .Description|markdownify }}
+      {{ else }}
+        {{ .Title }} に関連する記事です。
+      {{ end }}
+    </header>
   </section>
   {{ partial "list.html" .Paginator.Pages }}
   {{ partial "pagination.html" . }}
   <h2>Tags</h2>
-  {{ partial "list_tags.html" .}}
+  {{ partial "list_tags.html" . }}
 
 {{ end }}

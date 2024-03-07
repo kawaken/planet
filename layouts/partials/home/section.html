@@ -3,7 +3,7 @@
 </h2>
 {{ if .url }}
   {{ $data := getJSON .url }}
-  {{ partial .type $data}}
+  {{ partial .type $data }}
 {{ else }}
   {{ partial .type .data }}
 {{ end }}
@@ -24,7 +24,7 @@
   <article>
     {{ if not ( strings.Contains $markdown "<p>" ) }}
       <p>{{ $markdown }}</p>
-      {{ else }}
+    {{ else }}
       {{ $markdown }}
     {{ end }}
   </article>
@@ -35,21 +35,31 @@
   {{ $paginate := site.Param "photoPaginate" | default 32 }}
   {{ $bu := .base_url }}
   <div class="gallery">
-  {{ range $photo := first $paginate (sort .photos "meta.taken_at" "desc")}}
-  {{ $targets := where $photo.sources ".is_square" "==" false}}
-  {{ $len := (len $targets)}}
-  <img loading="lazy" srcset="
+    {{ range $photo := first $paginate (sort .photos "meta.taken_at" "desc") }}
+      {{ $targets := where $photo.sources ".is_square" "==" false }}
+      {{ $len := (len $targets) }}
+      <img
+        loading="lazy"
+        srcset="
+          {{- range $i, $src := $targets -}}
+            {{ $bu }}/{{ path.Join $photo.id $src.name }} {{ $src.width -}}w
+            {{- if ne (add $i 1) $len }},{{ end }}
+          {{ end -}}
+        "
+        sizes="{{ $sizes }}"
+        alt="{{ $photo.meta.title }}"
+      />
+      <link
+        rel="preload"
+        as="image"
+        imagesrcset="
     {{- range $i, $src := $targets -}}
-      {{$bu}}/{{ path.Join $photo.id $src.name}} {{ $src.width -}}w
-      {{- if ne (add $i 1) $len }}, {{end}}
-    {{ end -}}
-  " sizes="{{$sizes}}" alt="{{$photo.meta.title}}">
-  <link rel="preload" as="image" imagesrcset="
-    {{- range $i, $src := $targets -}}
-      {{$bu}}/{{ path.Join $photo.id $src.name}} {{ $src.width -}}w
-      {{- if ne (add $i 1) $len }}, {{end}}
-    {{ end -}}
-  " imagesizes="{{$sizes}}">
-  {{ end }}
+          {{ $bu }}/{{ path.Join $photo.id $src.name }} {{ $src.width -}}w
+          {{- if ne (add $i 1) $len }},{{ end }}
+        {{ end -}}
+  "
+        imagesizes="{{ $sizes }}"
+      />
+    {{ end }}
   </div>
 {{ end }}
