@@ -150,6 +150,14 @@ picture {
   margin: 1em auto;
 }
 
+figure > img {
+  margin: 0 auto;
+}
+
+figcaption {
+  text-align: center;
+}
+
 div.gallery {
   display: flex;
   flex-wrap: wrap;
