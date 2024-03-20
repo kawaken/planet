@@ -228,3 +228,9 @@ li {
   background-color: var(--color);
   color: var(--bg-color);
 }
+
+@media screen and (max-width: 600px) {
+  figure {
+    margin: 0 -1rem;
+  }
+}
