@@ -152,6 +152,7 @@ picture {
 
 figure > img {
   margin: 0 auto;
+  max-height: none;
 }
 
 figcaption {
