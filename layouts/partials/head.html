@@ -21,7 +21,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 <link rel="icon" type="image/png" href="/favicon.png" />
 <!-- OGP -->
-{{ template "_internal/opengraph.html" . }}
+{{ partial "opengraph.html" . }}
 {{ partial "twitter_cards.html" . }}
 {{ with ($.Param "twitter") }}
   <meta name="twitter:site" content="@{{ . }}" />
