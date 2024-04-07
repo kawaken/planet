@@ -33,10 +33,12 @@
   <meta property="og:type" content="website">
 {{- end }}
 
-{{ $ogp_local_path := print (path.Join "static/ogp" .File.Dir .File.BaseFileName) ".png" }}
-{{ if (fileExists $ogp_local_path) }}
-{{$ogp_path := print (path.Join "/ogp" .File.Dir .File.BaseFileName) ".png"}}
+{{with .File }}
+  {{ $ogp_local_path := print (path.Join "static/ogp" .Dir .BaseFileName) ".png" }}
+  {{ if (fileExists $ogp_local_path) }}
+    {{$ogp_path := print (path.Join "/ogp" .Dir .BaseFileName) ".png"}}
 <meta property="og:image" content="{{$ogp_path | absURL}}" />
+  {{ end }}
 {{ else}}
 <meta property="og:image" content="{{.Site.Params.image | absURL}}" />
 {{ end }}
