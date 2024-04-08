@@ -13,7 +13,7 @@
       <section>
         {{ with $posts }}
           <h2 id="posts">{{- $posts_type | title -}}</h2>
-          {{ partial "home/summaries.html" $posts }}
+          {{ partial "home/list.html" $posts }}
         {{ end }}
         {{ with .Site.GetPage "section" $posts_type -}}
           <footer>

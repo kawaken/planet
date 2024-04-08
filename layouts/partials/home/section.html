@@ -1,11 +1,13 @@
 <h2 id="{{ with .id }}{{ . }}{{ else }}{{ .name | lower }}{{ end }}">
-  {{ .name | title }}
+  {{ .name | title }}{{ with .comment}}<small>{{ . }}</small>{{ end }}
 </h2>
 {{ if .url }}
   {{ $data := getJSON .url }}
   {{ partial .type $data }}
 {{ else }}
-  {{ partial .type .data }}
+  {{ if .data }}
+    {{ partial .type .data }}
+  {{ end }}
 {{ end }}
 
 {{ define "partials/links" }}
@@ -62,4 +64,41 @@
       />
     {{ end }}
   </div>
+{{ end }}
+
+{{ define "partials/imagekit" }}
+  {{ $sizes := site.Param "photoSizes" | default "100vw" }}
+  {{ $paginate := site.Param "photoPaginate" | default 32 }}
+  <div class="gallery">
+    {{ range $photo := first $paginate .photos }}
+      {{ with $photo }}
+      <img src="{{.url}}" alt="{{.alt}}" sizes="{{$sizes}}"
+          srcset="{{.url}}?tr=w-320 320w,
+                  {{.url}}?tr=w-640 640w,
+                  {{.url}}?tr=w-768 768w,
+                  {{.url}}?tr=w-800 800w,
+                  {{.url}}?tr=w-940 940w,
+                  {{.url}}?tr=w-1024 1024w,
+                  {{.url}}?tr=w-1150 1150w,
+                  {{.url}}?tr=w-1280 1280w,
+                  {{.url}}?tr=w-1366 1366w,
+                  {{.url}}?tr=w-1526 1526w,
+                  {{.url}}?tr=w-1640 1640w,
+                  {{.url}}?tr=w-1756 1756w,
+                  {{.url}}?tr=w-1860 1860w,
+                  {{.url}}?tr=w-1920 1920w,
+                  {{.url}}?tr=w-2048 2048w" >
+      {{ end }}
+    {{ end }}
+  </div>
+{{ end }}
+
+{{ define "partials/slides" }}
+<div class="slides">
+  {{ range .slides }}
+  <div class="slide">
+    <a href="{{.url}}" target="_blank" rel="noopener"><img src="{{.src}}" alt="{{.title}}">{{.title}}</a>
+  </div>
+  {{ end }}
+</div>
 {{ end }}
