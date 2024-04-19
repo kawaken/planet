@@ -12,7 +12,7 @@
   </section>
   {{ partial "list.html" .Paginator.Pages }}
   {{ partial "pagination.html" . }}
-  <h2>Tags</h2>
+  <h2>{{ .Data.Plural | title }}</h2>
   {{ partial "list_taxonomy.html" . }}
 
 {{ end }}
