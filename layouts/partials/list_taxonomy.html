@@ -1,6 +1,6 @@
 <ul class="flex">
   {{ $taxonomy := .Data.Plural}}
-  {{ range (index .Site.Taxonomies $taxonomy).Alphabetical }}
+  {{ range (index .Site.Taxonomies $taxonomy).ByCount }}
     <li><a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a> ({{ .Count }})</li>
   {{ end }}
 </ul>
