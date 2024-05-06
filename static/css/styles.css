@@ -179,6 +179,18 @@ div.gallery > img {
   width: clamp(60px, 24%, 210px);
 }
 
+div.gallery > a {
+  display: block;
+  max-width: 210px;
+  margin: 0;
+  width: clamp(60px, 24%, 210px);
+  padding: 0;
+}
+
+div.gallery > a > img {
+  margin: 0;
+}
+
 div.slide {
   text-overflow: ellipsis;
   overflow-x: hidden;

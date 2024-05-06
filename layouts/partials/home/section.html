@@ -72,7 +72,8 @@
   <div class="gallery">
     {{ range $photo := first $paginate .photos }}
       {{ with $photo }}
-      <img src="{{.url}}" alt="{{.alt}}" sizes="{{$sizes}}"
+      {{ with .post }}<a href="{{.}}">{{ end -}}
+      <img class="gallery" src="{{.url}}" alt="{{.alt}}" sizes="{{$sizes}}"
           srcset="{{.url}}?tr=w-320 320w,
                   {{.url}}?tr=w-640 640w,
                   {{.url}}?tr=w-768 768w,
@@ -88,6 +89,7 @@
                   {{.url}}?tr=w-1860 1860w,
                   {{.url}}?tr=w-1920 1920w,
                   {{.url}}?tr=w-2048 2048w" >
+      {{ with .post }}</a>{{ end }}
       {{ end }}
     {{ end }}
   </div>
