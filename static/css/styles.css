@@ -171,15 +171,10 @@ div.gallery {
   justify-content: center;
   gap: 2px;
   margin: 1em auto;
+  align-items: flex-start;
 }
 
-div.gallery > img {
-  max-width: 210px;
-  margin: 0;
-  width: clamp(60px, 24%, 210px);
-}
-
-div.gallery > a {
+div.gallery > a, div.gallery > div{
   display: block;
   max-width: 210px;
   margin: 0;
@@ -187,8 +182,9 @@ div.gallery > a {
   padding: 0;
 }
 
-div.gallery > a > img {
+div.gallery > * > img {
   margin: 0;
+  aspect-ratio: 3/2;
 }
 
 div.slide {
