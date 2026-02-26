@@ -2,8 +2,14 @@
   {{ .name | title }}{{ with .comment}}<small>{{ . }}</small>{{ end }}
 </h2>
 {{ if .url }}
-  {{ $data := getJSON .url }}
-  {{ partial .type $data }}
+  {{ with resources.GetRemote .url }}
+    {{ with .Err }}
+      {{ errorf "Failed to fetch remote resource: %s" . }}
+    {{ else }}
+      {{ $data := . | transform.Unmarshal }}
+      {{ partial $.type $data }}
+    {{ end }}
+  {{ end }}
 {{ else }}
   {{ if .data }}
     {{ partial .type .data }}
