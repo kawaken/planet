@@ -1,0 +1,23 @@
+{{- $sizes := .sizes | default (site.Param "photoSizes" | default "100vw") -}}
+<div class="gallery">
+  {{ range $photo := .photos }}
+    {{ with $photo }}{{ with .post }}<a href="{{.}}">{{else}}<div>{{ end -}}
+    <img class="gallery" src="{{.url}}" alt="{{.alt}}" sizes="{{$sizes}}"
+        srcset="{{.url}}?tr=w-320 320w,
+                {{.url}}?tr=w-640 640w,
+                {{.url}}?tr=w-768 768w,
+                {{.url}}?tr=w-800 800w,
+                {{.url}}?tr=w-940 940w,
+                {{.url}}?tr=w-1024 1024w,
+                {{.url}}?tr=w-1150 1150w,
+                {{.url}}?tr=w-1280 1280w,
+                {{.url}}?tr=w-1366 1366w,
+                {{.url}}?tr=w-1526 1526w,
+                {{.url}}?tr=w-1640 1640w,
+                {{.url}}?tr=w-1756 1756w,
+                {{.url}}?tr=w-1860 1860w,
+                {{.url}}?tr=w-1920 1920w,
+                {{.url}}?tr=w-2048 2048w">{{- with .post }}</a>{{else}}</div>{{ end -}}
+    {{ end }}
+  {{ end }}
+</div>
